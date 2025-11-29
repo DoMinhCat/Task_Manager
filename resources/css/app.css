@@ -39,16 +39,30 @@
 
     /* h1/2/3... customizable */
     .title1{
-        @apply text-center text-blue-600
+        @apply text-center text-blue-600 font-bold
     }
 
     /* CONTAINTER BOX for ELEMENTS*/
     .container1{
-        @apply mt-10 bg-white p-8 rounded-xl shadow space-y-6 max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl
+        @apply my-5 bg-white p-8 rounded-xl shadow space-y-6 max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl
     }
 
     /* TEXT BOX/AREA */
     .txt-box{
         @apply hover:ring-2 hover:ring-blue-600 hover:border-blue-600 rounded-lg transition
     }
+
+    /* CARD for team members */
+    .card {
+        @apply bg-white px-6 py-2 rounded-lg shadow hover:shadow-lg transition text-center flex flex-col justify-center;
+    }
+
+    .card img {
+        @apply w-20 h-24 rounded-l-xs mx-auto mb-4;
+    }
+
+    .card h3 {
+        @apply text-lg font-semibold text-blue-800 mb-2;
+    }
+
 }
