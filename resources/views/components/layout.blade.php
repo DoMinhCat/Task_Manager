@@ -15,7 +15,7 @@
             <div class="flex items-center justify-between">
                 <div class="flex justify-center-safe">
                     <div class="flex items-center space-x-6">
-                        <h2>Task Manager</h2>
+                        <h2 class="text-white">Task Manager</h2>
                         <x-nav-link :href="route('home')" :active="Route::is('home')">
                             Home
                         </x-nav-link>
@@ -32,7 +32,7 @@
                 </div>
                 <div>
                     <div class="flex items-center space-x-6">
-                        <x-nav-link :href="route('login')" :active="Route::is('login')">
+                        <x-nav-link :href="route('login')" :active="Route::is('login') || Route::is('register')">
                             Sign in
                         </x-nav-link>
                     </div>
@@ -41,7 +41,7 @@
         </nav>
     </header>
 
-    <main class="container mx-auto px-4 py-8 flex flex-col">
+    <main class="container mx-auto px-4 py-8 flex flex-col items-center">
         {{ $slot }}
     </main>
 

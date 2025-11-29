@@ -14,21 +14,41 @@
 
 @layer base {
     h1 {
-        @apply text-3xl font-bold text-white
+        @apply text-3xl font-bold
     }
 
     h2 {
-        @apply text-xl font-bold text-white
+        @apply text-xl font-bold
     }
 }
 
 @layer components {
-    .btn {
+    
+    /* BUTTONS */
+    .btn-nav {
         @apply bg-blue-800 px-2 py-1 rounded text-blue-200 hover:bg-blue-600 hover:text-blue-50
     }
 
-    .btn-primary {
+    .btn-nav-primary {
         @apply bg-blue-600 px-2 py-1 rounded text-blue-50
     }
 
+    .btn-blue{
+        @apply w-full bg-blue-600 hover:bg-blue-800 text-white py-2 rounded-lg font-medium transition
+    }
+
+    /* h1/2/3... customizable */
+    .title1{
+        @apply text-center text-blue-600
+    }
+
+    /* CONTAINTER BOX for ELEMENTS*/
+    .container1{
+        @apply mt-10 bg-white p-8 rounded-xl shadow space-y-6 max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl
+    }
+
+    /* TEXT BOX/AREA */
+    .txt-box{
+        @apply hover:ring-2 hover:ring-blue-600 hover:border-blue-600 rounded-lg transition
+    }
 }

@@ -13,6 +13,10 @@ Route::get('/login', function () {
     return view('login');
 })->name('login');
 
+Route::get('/register', function () {
+    return view('register');
+})->name('register');
+
 Route::get('/about', function () {
     return view('about');
 })->name('about');
@@ -27,3 +31,5 @@ Route::get('/dashboard', function () {
 
 // LOGIN/SIGN UP
 Route::post('/login', [UserController::class, 'store']);
+
+

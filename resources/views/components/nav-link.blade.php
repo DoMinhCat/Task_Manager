@@ -3,8 +3,8 @@
 ])
 <a
     {{ $attributes->class([
-        'btn',
-        'btn-primary' => $active,
+        'btn-nav',
+        'btn-nav-primary' => $active,
     ]) }}
 >
     {{ $slot }}

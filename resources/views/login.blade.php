@@ -1,8 +1,8 @@
 <x-layout>
-    <div class="max-w-md mx-auto mt-10 bg-white p-8 rounded-xl shadow space-y-6">
+    <div class="container1">
 
-        <h1 class="text-2xl font-semibold text-center text-blue-800">
-            Sign in to your Task Manager account
+        <h1 class="title1">
+            Sign in to Task Manager
         </h1>
 
         @if(session('error'))
@@ -11,22 +11,22 @@
             </div>
         @endif
 
-        <form action="{{ route('login.submit') }}" method="POST" class="space-y-5">
+        <form action="{{ route('login') }}" method="POST" class="space-y-5">
             @csrf
 
-            <flux:input label="Email" type="email" name="email" placeholder="Enter your email"
+            <flux:input class="txt-box" label="Email" type="email" name="email" placeholder="Enter your email"
                 value="{{ old('email') }}" />
 
-            <flux:input label="Password" type="password" name="password" placeholder="Enter your password" />
+            <flux:input class="txt-box" label="Password" type="password" name="password"
+                placeholder="Enter your password" />
 
-            <button type="submit"
-                class="w-full bg-blue-700 hover:bg-blue-800 text-white py-2 rounded-lg font-medium transition">
+            <button type="submit" class="btn-blue">
                 Sign in
             </button>
         </form>
 
         <p class="text-center text-sm text-gray-600">
-            Don't have an account ?
+            Don't have an account yet ?
             <a href="{{ route('register') }}" class="text-blue-700 hover:underline">
                 Create a new account
             </a>
