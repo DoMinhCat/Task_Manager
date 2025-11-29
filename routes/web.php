@@ -10,11 +10,11 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/login', function () {
-    return view('auth/login');
+    return view('user.login');
 })->name('login');
 
 Route::get('/register', function () {
-    return view('auth/register');
+    return view('user.register');
 })->name('register');
 
 Route::get('/about', function () {

@@ -42,7 +42,8 @@
                         @endguest
                         @auth
                             <flux:dropdown position="bottom" align="end" style="btn-blue">
-                                <flux:button icon:trailing="chevron-down">{{ Auth::user()->name }}</flux:button>
+                                <flux:button class="hover:bg-zinc-100" icon:trailing="chevron-down">{{ Auth::user()->name }}
+                                </flux:button>
 
                                 <flux:menu>
                                     <flux:menu.item href="{{ route('account', ['user_id' => Auth::user()->id]) }}"

@@ -70,9 +70,11 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(User $user)
-    {
-        //
+    public function show($user_id)
+    {   
+        $user = User::where('id', $user_id)->firstOrFail();
+
+        return view('user.account', compact('user'));
     }
 
     /**
