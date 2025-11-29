@@ -11,7 +11,7 @@
             </div>
         @endif
 
-        <form action="{{ route('login') }}" method="POST" class="space-y-5">
+        <form action="{{ route('login.submit') }}" method="POST" class="space-y-5">
             @csrf
 
             <flux:input class="txt-box" label="Email" type="email" name="email" placeholder="Enter your email"

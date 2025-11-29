@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -35,7 +36,26 @@ class UserController extends Controller
         ]);
 
         User::create($validated);
-        return redirect('/')->with('success', 'User created successfully.');
+        return redirect('/')->with('success', 'Your account has been successfully created.');
+    }
+
+    public function login(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
+            $name = Auth::user()->name;
+            return redirect('/')->with('success', "Welcome back, $name!");
+        }
+
+        // if login fails:
+        return back()->withErrors([
+            'email' => 'Email or password incorrect.',
+        ]);
     }
 
     /**

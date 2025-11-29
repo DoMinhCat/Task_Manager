@@ -10,11 +10,11 @@ Route::get('/', function () {
 })->name('home');
 
 Route::get('/login', function () {
-    return view('login');
+    return view('auth/login');
 })->name('login');
 
 Route::get('/register', function () {
-    return view('register');
+    return view('auth/register');
 })->name('register');
 
 Route::get('/about', function () {
@@ -30,7 +30,7 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 // LOGIN/SIGN UP
-// Route::post('/login/submit', [UserController::class, 'store']);
+Route::post('/login/submit', [UserController::class, 'login'])->name('login.submit');
 Route::post('/resgister/submit', [UserController::class, 'store'])->name('register.submit');
 
 

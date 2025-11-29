@@ -6,7 +6,7 @@
             <div x-data="{ visible: true }" x-show="visible" x-collapse>
                 <div x-show="visible" x-transition>
                     <flux:callout icon="check" color="green">
-                        <flux:callout.heading>Your account has been successfully created.</flux:callout.heading>
+                        <flux:callout.heading>{{ session('success') }}</flux:callout.heading>
 
                         <x-slot name="controls">
                             <flux:button icon="x-mark" variant="ghost" x-on:click="visible = false" />
