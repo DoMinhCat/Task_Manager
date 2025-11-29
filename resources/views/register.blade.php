@@ -1,20 +1,11 @@
 <x-layout>
-    <div class="container1">
+    <div class="container1 responsive">
 
         <h1 class="title1">
             Create a new account
         </h1>
 
-        {{-- Flash or error messages --}}
-        @if ($errors->any())
-            <div class="bg-red-100 text-red-700 p-3 rounded space-y-1">
-                @foreach ($errors->all() as $error)
-                    <p>{{ $error }}</p>
-                @endforeach
-            </div>
-        @endif
-
-        <form action="{{ route('register') }}" method="POST" class="space-y-5">
+        <form action="{{ route('register.submit') }}" method="POST" class="space-y-5">
             @csrf
 
             <flux:input class="txt-box" label="Name" name="name" placeholder="Enter your name"
@@ -24,10 +15,10 @@
                 value="{{ old('email') }}" />
 
             <flux:input class="txt-box" label="Password" type="password" name="password"
-                placeholder="Enter your password" />
+                placeholder="Choose your password" value="{{ old('password') }}" />
 
-            <flux:input class="txt-box" label="Confirm password" type="password" name="password_confirmation"
-                placeholder="Confirm your password" />
+            <flux:input class=" txt-box" label="Confirm password" type="password" name="password_confirmation"
+                placeholder="Confirm your password" value="{{ old('password_confirmation') }}" />
 
             <button type="submit" class="btn-blue">
                 Register

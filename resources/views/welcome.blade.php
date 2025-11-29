@@ -1,7 +1,23 @@
 <x-layout>
 
+    {{-- ERROR/SUCCESS MSG --}}
+    @if(session('success'))
+        <div class="w-full max-w-md sm:max-w-lg md:max-w-xl lg:max-w-2xl">
+            <div x-data="{ visible: true }" x-show="visible" x-collapse>
+                <div x-show="visible" x-transition>
+                    <flux:callout icon="check" color="green">
+                        <flux:callout.heading>Your account has been successfully created.</flux:callout.heading>
+
+                        <x-slot name="controls">
+                            <flux:button icon="x-mark" variant="ghost" x-on:click="visible = false" />
+                        </x-slot>
+                    </flux:callout>
+                </div>
+            </div>
+        </div>
+    @endif
     <!-- HERO SECTION -->
-    <section class="container1 text-center">
+    <section class="container1 text-center responsive">
         <h1 class="title1 text-4xl font-bold mb-4">
             Welcome to Task Manager
         </h1>
@@ -21,7 +37,7 @@
     </section>
 
     <!-- FEATURES -->
-    <section class="container1">
+    <section class="container1 responsive">
         <h2 class="text-gray-900 text-3xl font-semibold mb-6 text-center">
             Principle features
         </h2>
@@ -46,7 +62,7 @@
     </section>
 
     <!-- ABOUT -->
-    <section class="container1 text-center">
+    <section class="container1 responsive text-center">
         <h2 class="text-3xl font-semibold mb-4">
             Why choose us?
         </h2>

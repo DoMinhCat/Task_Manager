@@ -30,6 +30,7 @@ Route::get('/dashboard', function () {
 })->name('dashboard');
 
 // LOGIN/SIGN UP
-Route::post('/login', [UserController::class, 'store']);
+// Route::post('/login/submit', [UserController::class, 'store']);
+Route::post('/resgister/submit', [UserController::class, 'store'])->name('register.submit');
 
 

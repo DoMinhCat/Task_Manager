@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="container1">
+    <div class="container1 responsive">
 
         <h1 class="title1">
             Sign in to Task Manager
