@@ -10,6 +10,21 @@
 @endguest
 
 @auth
+    @if(session('success'))
+        <div class="w-full responsive">
+            <div x-data="{ visible: true }" x-show="visible" x-collapse>
+                <div x-show="visible" x-transition>
+                    <flux:callout icon="check" color="green">
+                        <flux:callout.heading>{{ session('success') }}</flux:callout.heading>
+
+                        <x-slot name="controls">
+                            <flux:button icon="x-mark" variant="ghost" x-on:click="visible = false" />
+                        </x-slot>
+                    </flux:callout>
+                </div>
+            </div>
+        </div>
+    @endif
     @if($projects->count() < 1)
         <x-layout>
             <div class="container1 text-center">
@@ -32,11 +47,11 @@
                             </div>
                             <div>
                                 <span class="px-2 py-1 rounded-lg text-xs font-medium 
-                                                    @if($project->status === 'completed') bg-green-500/20 text-green-400 
-                                                    @elseif($project->status === 'in-progress') bg-blue-500/20 text-blue-400
-                                                    @else bg-neutral-500/20 text-neutral-400 
-                                                    @endif
-                                                ">
+                                                                @if($project->status === 'completed') bg-green-500/20 text-green-400 
+                                                                @elseif($project->status === 'in-progress') bg-blue-500/20 text-blue-400
+                                                                @else bg-neutral-500/20 text-neutral-400 
+                                                                @endif
+                                                            ">
                                     {{ ucfirst($project->status) }}
                                 </span>
 
