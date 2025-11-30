@@ -3,6 +3,7 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\TaskController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -10,12 +11,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 })->name('home');
-
-Route::get('/login', function () {
-    return view('user.login');
-})->name('login');
-
-
 
 Route::get('/about', function () {
     return view('about');
@@ -38,6 +33,9 @@ Route::get('/register', function () {
     return view('user.register');
 })->name('register');
 Route::post('/resgister/submit', [UserController::class, 'store'])->name('register.submit');
+Route::get('/login', function () {
+    return view('user.login');
+})->name('login');
 Route::post('/login/submit', [UserController::class, 'login'])->name('login.submit');
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 Route::get('/user/{user_id}', [UserController::class, 'show'])->name('account');
@@ -49,6 +47,13 @@ Route::get('/projects/new', function () {
 })->name('new_project');
 Route::post('/projects/submit', [ProjectController::class, 'store'])->name('submit_project');
 Route::get('/projects/{project_id}', [ProjectController::class, 'show'])->name('one_project');
+
+// TASK
+Route::get('/projects/{project_id}/tasks/new', [TaskController::class, 'create'])->name('new_task');
+Route::post('/projects/{project_id}/tasks/submit', [TaskController::class, 'store'])->name('submit_task');
+Route::get('/projects/{project_id}/tasks/{task_id}', [TaskController::class, 'show'])->name('one_task');
+
+
 
 
 

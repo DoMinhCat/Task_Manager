@@ -41,13 +41,15 @@
                                 Manage and track all your projects in one place
                             </p>
                         </div>
-                        <a href="{{ route('new_project') }}"
-                            class="inline-flex items-center justify-center px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition duration-150 ease-in-out shadow-sm hover:shadow-md">
-                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
-                            </svg>
-                            New Project
-                        </a>
+                        @if($projects->count() > 0)
+                            <a href="{{ route('new_project') }}"
+                                class="inline-flex items-center justify-center px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition duration-150 ease-in-out shadow-sm hover:shadow-md">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                                </svg>
+                                New Project
+                            </a>
+                        @endif
                     </div>
 
                     <div
@@ -89,19 +91,19 @@
                                             <td class="px-6 py-4">
                                                 <span
                                                     class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium
-                                                                                                                                        @if($project->status === 'completed') 
-                                                                                                                                            bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400
-                                                                                                                                        @elseif($project->status === 'in_progress') 
-                                                                                                                                            bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400
-                                                                                                                                        @else 
-                                                                                                                                            bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400
-                                                                                                                                        @endif">
+                                                                                                                                                                @if($project->status === 'completed') 
+                                                                                                                                                                    bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400
+                                                                                                                                                                @elseif($project->status === 'in_progress') 
+                                                                                                                                                                    bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400
+                                                                                                                                                                @else 
+                                                                                                                                                                    bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-400
+                                                                                                                                                                @endif">
                                                     <span
                                                         class="w-1.5 h-1.5 rounded-full mr-1.5
-                                                                                                                                            @if($project->status === 'completed') bg-green-500
-                                                                                                                                            @elseif($project->status === 'in_progress') bg-blue-500
-                                                                                                                                            @else bg-yellow-500
-                                                                                                                                            @endif">
+                                                                                                                                                                    @if($project->status === 'completed') bg-green-500
+                                                                                                                                                                    @elseif($project->status === 'in_progress') bg-blue-500
+                                                                                                                                                                    @else bg-yellow-500
+                                                                                                                                                                    @endif">
                                                     </span>
                                                     {{ ucfirst(str_replace('_', ' ', $project->status)) }}
                                                 </span>

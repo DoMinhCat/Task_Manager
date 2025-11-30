@@ -3,63 +3,63 @@
 namespace App\Http\Controllers;
 
 use App\Models\Project;
+use App\Models\Task;
 use Illuminate\Http\Request;
 
-class ProjectController extends Controller
+class TaskController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $projects = Project::with('tasks')->get(); 
-        return view('project.index', compact('projects'));
+        //
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($project_id)
     {
-        //
+        $project = Project::findOrFail($project_id);
+
+    return view('task.new', [
+        'project' => $project,
+    ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, $project_id)
     {
         $validated = $request->validate([
-            'name'        => 'required|min:3|max:255',
+            'title'        => 'required|min:3|max:255',
             'description' => 'nullable|max:1023',
+            'priority' => 'required|min:1|max:3',
             'deadline'      => 'nullable|date|not_before_today',
         ]);
-
-        $validated['owner_id'] = $request->user()->id;
+        $validated['project_id'] = $project_id;
         // Create project
-        Project::create($validated);
+        Task::create($validated);
 
         return redirect()
-            ->route('all_projects')
-            ->with('success', $validated['name'] . ' has been successfully created.');
+        ->route('one_project', ['project_id' => $validated['project_id']])
+        ->with('success', $validated['title'] . ' has been successfully created.');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($project_id)
+    public function show(Task $task)
     {
-        $project = Project::where('id', $project_id)->firstOrFail();
-        return view('project.project', [
-            'project' => $project,
-            'tasks' => $project->tasks
-        ]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Project $project)
+    public function edit(Task $task)
     {
         //
     }
@@ -67,7 +67,7 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Project $project)
+    public function update(Request $request, Task $task)
     {
         //
     }
@@ -75,7 +75,7 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Project $project)
+    public function destroy(Task $task)
     {
         //
     }
