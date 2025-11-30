@@ -16,15 +16,15 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             <div class="card">
-                <img src="https://ges-dl.kordis.fr/public/dEkj-aOcIw52B9RsgY-opxZKLObMy9-7CZSMwXEBz3M?pfdrid_c=true"
-                    alt="Member 1">
-                <h3>Minh Cat Do</h3>
-            </div>
-
-            <div class="card">
                 <img src="https://ges-dl.kordis.fr/public/dEkj-aOcIw52B9RsgY-op0-UXLMiAp56CZSMwXEBz3M?pfdrid_c=true"
                     alt="Member 2">
                 <h3>Thibaut Boesel</h3>
+            </div>
+
+            <div class="card">
+                <img src="https://ges-dl.kordis.fr/public/dEkj-aOcIw52B9RsgY-opxZKLObMy9-7CZSMwXEBz3M?pfdrid_c=true"
+                    alt="Member 1">
+                <h3>Minh Cat Do</h3>
             </div>
 
             <div class="card">

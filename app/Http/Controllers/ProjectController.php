@@ -29,7 +29,7 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // create new proj
     }
 
     /**
