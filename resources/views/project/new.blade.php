@@ -1,16 +1,11 @@
-@guest
-    <div class="w-full responsive">
-        <flux:callout icon="x-mark" color="red">
-            <flux:callout.heading>You need to sign in to view this page.</flux:callout.heading>
-            <x-slot name="actions">
-                <flux:button class="btn-blue" href="/login">Sign in</flux:button>
-            </x-slot>
-        </flux:callout>
-    </div>
-@endguest
+<x-layout>
+    @guest
+        <x-unauth>
 
-@auth
-    <x-layout>
+        </x-unauth>
+    @endguest
+
+    @auth
         <div class="container1">
 
             <h1 class="title1">
@@ -35,5 +30,5 @@
             </form>
 
         </div>
-    </x-layout>
-@endauth
+    @endauth
+</x-layout>

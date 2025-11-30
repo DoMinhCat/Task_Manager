@@ -32,9 +32,9 @@ class ProjectController extends Controller
         $validated = $request->validate([
             'name'        => 'required|min:3|max:255',
             'description' => 'nullable|max:1023',
-            'due_at'      => 'nullable|date|not_before_today',
+            'deadline'      => 'nullable|date|not_before_today',
         ]);
-        
+
         $validated['owner_id'] = $request->user()->id;
         // Create project
         Project::create($validated);
