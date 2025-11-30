@@ -24,7 +24,7 @@
                             <x-nav-link :href="route('dashboard')" :active="Route::is('dashboard')">
                                 Dashboard
                             </x-nav-link>
-                            <x-nav-link :href="route('projects')" :active="Route::is('projects')">
+                            <x-nav-link :href="route('all_projects')" :active="Route::is('all_projects') || Route::is('one_project') ">
                                 Projects
                             </x-nav-link>
                         @endauth

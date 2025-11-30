@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="container1 text-center responsive">
+    <div class="container1 text-center">
 
         <h1 class="title1">
             About Task Manager

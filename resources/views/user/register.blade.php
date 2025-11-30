@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="container1 responsive">
+    <div class="container1">
 
         <h1 class="title1">
             Create a new account

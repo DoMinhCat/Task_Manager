@@ -1,8 +1,8 @@
 <x-layout>
-    <div class="container1 responsive">
+    <div class="container1">
 
         <h1 class="title1">
-            Sign in to Task Manager
+            Sign in to Project Manager
         </h1>
 
         @if(session('error'))
