@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\DashboardController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -20,9 +21,17 @@ Route::get('/about', function () {
     return view('about');
 })->name('about');
 
+
+// DASHBOARD
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+/*
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+*/
+
 
 // USER
 Route::get('/register', function () {
@@ -40,6 +49,8 @@ Route::get('/projects/new', function () {
 })->name('new_project');
 Route::post('/projects/submit', [ProjectController::class, 'store'])->name('submit_project');
 Route::get('/projects/{project_id}', [ProjectController::class, 'show'])->name('one_project');
+
+
 
 
 
