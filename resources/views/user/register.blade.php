@@ -1,36 +1,49 @@
 <x-layout>
-    <div class="container1">
+    @auth
+        <div class="w-full max-w-md mx-auto mt-20">
+            <div class="container1 bg-green-100 text-green-800 text-center">
+                <h2 class="text-lg font-semibold mb-4">You are signed in as {{ Auth::user()->name }}.</h2>
 
-        <h1 class="title1">
-            Create a new account
-        </h1>
+                <a href="/dashboard" class="btn-blue w-full sm:w-auto mx-auto inline-block">
+                    Go to dashboard
+                </a>
+            </div>
+        </div>
+    @endauth
+    @guest
+        <div class="container1">
 
-        <form action="{{ route('register.submit') }}" method="POST" class="space-y-5">
-            @csrf
+            <h1 class="title1">
+                Create a new account
+            </h1>
 
-            <flux:input class="txt-box" label="Name" name="name" placeholder="Enter your name"
-                value="{{ old('name') }}" />
+            <form action="{{ route('register.submit') }}" method="POST" class="space-y-5">
+                @csrf
 
-            <flux:input class="txt-box" label="Email" type="email" name="email" placeholder="Enter your email"
-                value="{{ old('email') }}" />
+                <flux:input class="txt-box" label="Name" name="name" placeholder="Enter your name"
+                    value="{{ old('name') }}" />
 
-            <flux:input class="txt-box" label="Password" type="password" name="password"
-                placeholder="Choose your password" value="{{ old('password') }}" />
+                <flux:input class="txt-box" label="Email" type="email" name="email" placeholder="Enter your email"
+                    value="{{ old('email') }}" />
 
-            <flux:input class=" txt-box" label="Confirm password" type="password" name="password_confirmation"
-                placeholder="Confirm your password" value="{{ old('password_confirmation') }}" />
+                <flux:input class="txt-box" label="Password" type="password" name="password"
+                    placeholder="Choose your password" value="{{ old('password') }}" />
 
-            <button type="submit" class="btn-blue">
-                Register
-            </button>
-        </form>
+                <flux:input class=" txt-box" label="Confirm password" type="password" name="password_confirmation"
+                    placeholder="Confirm your password" value="{{ old('password_confirmation') }}" />
 
-        <p class="text-center text-sm text-gray-600">
-            Already have an account ?
-            <a href="{{ route('login') }}" class="text-blue-700 hover:underline">
-                Sign in
-            </a>
-        </p>
+                <button type="submit" class="btn-blue">
+                    Register
+                </button>
+            </form>
 
-    </div>
+            <p class="text-center text-sm text-gray-600">
+                Already have an account ?
+                <a href="{{ route('login') }}" class="text-blue-700 hover:underline">
+                    Sign in
+                </a>
+            </p>
+
+        </div>
+    @endguest
 </x-layout>
