@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('title');
             $table->text('description')->nullable();
             $table->boolean('done')->default(false);
-            $table->tinyInteger('priority')->default(1); // 1 = low, 2 = medium, 3 = high
+            $table->enum('status', ['in_progress', 'completed'])->default('in_progress'); 
+            $table->enum('priority', ['high', 'medium', 'low'])->default('medium'); 
             $table->timestamp('due_at')->nullable();
             $table->timestamps();
         });
