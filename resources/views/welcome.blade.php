@@ -1,7 +1,7 @@
 <x-layout>
     {{-- ERROR/SUCCESS MSG --}}
     @if(session('success'))
-        <div class="w-full responsive">
+        <div class="w-full max-w-3xl mx-auto mt-4 p-6">
             <div x-data="{ visible: true }" x-show="visible" x-collapse>
                 <div x-show="visible" x-transition>
                     <flux:callout icon="check" color="green">

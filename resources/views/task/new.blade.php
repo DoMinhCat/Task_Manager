@@ -6,7 +6,7 @@
     @endguest
 
     @auth
-        <div class="container1">
+        <div class="container1 w-full max-w-3xl mx-auto mt-4 p-6">
             {{-- Nav breadcrumbs --}}
             <flux:breadcrumbs>
                 <flux:breadcrumbs.item href="{{ route('project.all') }}">Projects</flux:breadcrumbs.item>
@@ -14,9 +14,7 @@
                 </flux:breadcrumbs.item>
                 <flux:breadcrumbs.item href="#">New Task</flux:breadcrumbs.item>
             </flux:breadcrumbs>
-            <h1 class="title1">
-                Create a task
-            </h1>
+            <h1 class="title1">Create a task</h1>
 
             <form action="{{ route('task.submit', $project) }}" method="POST" class="space-y-5">
                 @csrf
@@ -27,8 +25,8 @@
                 <flux:textarea class="txt-box" label="Description" name="description" placeholder="Easy peasy task"
                     value="{{ old('description') }}" />
 
-                <flux:input class="txt-box" label="Due date" name="deadline" type="date"
-                    placeholder="Choose the due date of the task" value="{{ old('deadline') }}" />
+                <flux:input class="txt-box" label="Due date" name="due_at" type="date"
+                    placeholder="Choose the due date of the task" value="{{ old('due_at') }}" />
 
                 <flux:select label="Priority" name="priority" class="max-w-fit" placeholder="Choose a priority">
                     <flux:select.option value="low">Low</flux:select.option>

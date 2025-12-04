@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="container1 text-center">
+    <div class="container1 text-center w-full max-w-3xl mx-auto mt-4 p-6">
 
         <h1 class="title1">
             About Task Manager

@@ -48,11 +48,12 @@ Route::get('/projects/new', function () {
 Route::post('/projects/submit', [ProjectController::class, 'store'])->name('project.submit');
 Route::get('/projects/{project}', [ProjectController::class, 'show'])->name('project.detail');
 Route::delete('/projects/{project}', [ProjectController::class, 'destroy'])->name('project.delete');
-
+Route::patch('/projects/{project}', [ProjectController::class, 'update'])->name('project.update');
 
 // TASK
 Route::get('/projects/{project}/tasks/new', [TaskController::class, 'create'])->name('task.new');
 Route::post('/projects/{project}/tasks/submit', [TaskController::class, 'store'])->name('task.submit');
 Route::get('/projects/{project}/tasks/{task}', [TaskController::class, 'show'])->name('task.detail');
-Route::delete('/projects/{project}/tasks/{task}/delete', [TaskController::class, 'destroy'])->name('task.delete');
+Route::delete('/projects/{project}/tasks/{task}', [TaskController::class, 'destroy'])->name('task.delete');
+Route::patch('/projects/{project}/tasks/{task}', [TaskController::class, 'update'])->name('task.update');
 

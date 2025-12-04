@@ -31,7 +31,7 @@
                 </flux:breadcrumbs>
 
                 {{-- Header --}}
-                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-4 mb-8 gap-4">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-5 mb-8 gap-4">
                     <h1 class="text-3xl font-bold text-gray-900">
                         {{ $project->name }}
                     </h1>
@@ -65,16 +65,16 @@
                                             class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                                             Task</th>
                                         <th
-                                            class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                            class="px-6 py-4 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">
                                             Status</th>
                                         <th
-                                            class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                            class="px-6 py-4 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">
                                             Priority</th>
                                         <th
-                                            class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                            class="px-6 py-4 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">
                                             Deadline</th>
                                         <th
-                                            class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                            class="px-6 py-4 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">
                                             Actions</th>
                                     </tr>
                                 </thead>
@@ -92,7 +92,7 @@
                                             </td>
 
                                             {{-- Status --}}
-                                            <td class="px-6 py-4">
+                                            <td class="px-6 py-4 text-center">
                                                 <span
                                                     class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium @if($task->status === 1) bg-green-100 text-green-700 @else bg-gray-100 text-gray-700 @endif">
                                                     <flux:icon.check-circle />
@@ -100,7 +100,7 @@
                                             </td>
 
                                             {{-- Priority --}}
-                                            <td class="px-6 py-4">
+                                            <td class="px-6 py-4 text-center">
                                                 <span
                                                     class="font-semibold  @if($task->priority === 3) text-red-500 @elseif($task->priority === 2) text-yellow-500 @else text-green-500 @endif">
                                                     {{ ucfirst($task->priority) }}
@@ -108,7 +108,7 @@
                                             </td>
 
                                             {{-- Deadline --}}
-                                            <td class="px-6 py-4 text-gray-600">
+                                            <td class="px-6 py-4 text-center text-gray-600">
                                                 @if($task->due_at)
                                                     <div class="flex items-center text-sm">
                                                         <svg class="w-4 h-4 mr-1.5 text-gray-400" fill="none" stroke="currentColor"
@@ -124,37 +124,14 @@
                                             </td>
 
                                             {{-- Action --}}
-                                            <td class="px-6 py-4">
-                                                <flux:modal.trigger name="{{ $task->id }}">
-                                                    <flux:button size="sm" variant="danger">
-                                                        <flux:icon.trash />
-                                                    </flux:button>
-                                                </flux:modal.trigger>
+                                            <td class="px-6 py-4 text-center">
+                                                <div class="flex items-center gap-1">
+                                                    {{-- Edit --}}
+                                                    <x-tasks.edit-task-modal :task="$task"></x-tasks.edit-task-modal>
 
-                                                <flux:modal :dismissible="false" name="{{ $task->id }}" class="min-w-88">
-                                                    <div class="space-y-6">
-                                                        <div>
-                                                            <flux:heading size="lg">Delete task?</flux:heading>
-                                                            <flux:text class="mt-2">
-                                                                You're about to delete this task.<br>
-                                                                This action cannot be reversed.
-                                                            </flux:text>
-                                                        </div>
-                                                        <div class="flex gap-2">
-                                                            <flux:spacer />
-                                                            <flux:modal.close>
-                                                                <flux:button variant="ghost">Cancel</flux:button>
-                                                            </flux:modal.close>
-                                                            <form action="{{ route('task.delete', [$project, $task]) }}"
-                                                                method="POST">
-                                                                @csrf
-                                                                @method('DELETE')
-
-                                                                <flux:button variant="danger" type="submit">Confirm</flux:button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </flux:modal>
+                                                    {{-- Delete --}}
+                                                    <x-tasks.del-task-modal :task="$task"></x-tasks.del-task-modal>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -172,6 +149,18 @@
                     </div>
 
                 @endif
+            </div>
+
+            <div class="m-6">
+                <flux:separator />
+            </div>
+
+            {{-- Danger zone --}}
+            <div class="max-w-7xl mx-auto text-center gap-3">
+                <x-projects.edit-proj-modal :project="$project"></x-projects.edit-proj-modal>
+
+                {{-- Delete --}}
+                <x-projects.del-proj-modal :project="$project"></x-projects.del-proj-modal>
             </div>
         </div>
     @endauth

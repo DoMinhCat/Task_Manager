@@ -62,19 +62,19 @@
                                             Project
                                         </th>
                                         <th scope="col"
-                                            class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                            class="px-6 py-4 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">
                                             Status
                                         </th>
                                         <th scope="col"
-                                            class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                            class="px-6 py-4 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">
                                             Owner
                                         </th>
                                         <th scope="col"
-                                            class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                            class="px-6 py-4 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">
                                             Deadline
                                         </th>
                                         <th scope="col"
-                                            class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                            class="px-6 py-4 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">
                                             Actions
                                         </th>
                                     </tr>
@@ -92,7 +92,7 @@
                                                     </span>
                                                 </a>
                                             </td>
-                                            <td class="px-6 py-4">
+                                            <td class="px-6 py-4 text-center">
                                                 <span
                                                     class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium @if($project->status === 'completed') bg-green-100 text-green-700 @elseif($project->status === 'in_progress')  bg-blue-100 text-blue-700 @else bg-yellow-100  text-yellow-700 @endif">
                                                     <span
@@ -110,7 +110,7 @@
                                                     </span>
                                                 </a>
                                             </td>
-                                            <td class="px-6 py-4">
+                                            <td class="px-6 py-4 text-center">
                                                 @if($project->due_at)
                                                     <div class="flex items-center text-sm text-gray-600">
                                                         <svg class="w-4 h-4 mr-1.5 text-gray-400" fill="none" stroke="currentColor"
@@ -126,36 +126,12 @@
                                             </td>
 
                                             {{-- Action --}}
-                                            <td class="px-6 py-4">
-                                                <flux:modal.trigger name="{{ $project->id }}">
-                                                    <flux:button size="sm" variant="danger">
-                                                        <flux:icon.trash />
-                                                    </flux:button>
-                                                </flux:modal.trigger>
+                                            <td class="px-6 py-4 text-center">
+                                                {{-- Edit --}}
+                                                <x-projects.edit-proj-modal :project="$project"></x-projects.edit-proj-modal>
 
-                                                <flux:modal :dismissible="false" name="{{ $project->id }}" class="min-w-88">
-                                                    <div class="space-y-6">
-                                                        <div>
-                                                            <flux:heading size="lg">Delete project?</flux:heading>
-                                                            <flux:text class="mt-2">
-                                                                You're about to delete this project and all its tasks.<br>
-                                                                This action cannot be reversed.
-                                                            </flux:text>
-                                                        </div>
-                                                        <div class="flex gap-2">
-                                                            <flux:spacer />
-                                                            <flux:modal.close>
-                                                                <flux:button variant="ghost">Cancel</flux:button>
-                                                            </flux:modal.close>
-                                                            <form action="{{ route('project.delete', $project) }}" method="POST">
-                                                                @csrf
-                                                                @method('DELETE')
-
-                                                                <flux:button variant="danger" type="submit">Confirm</flux:button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </flux:modal>
+                                                {{-- Delete --}}
+                                                <x-projects.del-proj-modal :project="$project"></x-projects.del-proj-modal>
                                             </td>
                                         </tr>
                                     @endforeach

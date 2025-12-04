@@ -37,7 +37,7 @@ class TaskController extends Controller
             'name'        => 'required|min:3|max:255',
             'description' => 'nullable|max:1023',
             'priority' => 'required',
-            'deadline'      => 'nullable|date|not_before_today',
+            'due_at'      => 'nullable|date|not_before_today',
         ]);
         $validated['project_id'] = $project->id;
         // Create project
@@ -62,15 +62,18 @@ class TaskController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Task $task)
+    public function edit(Project $project, Task $task)
     {
-        //
+        return view('task.edit', [
+            'task' => $task,
+            'project' => $project
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Task $task)
+    public function update(Request $request, Project $project, Task $task)
     {
         //
     }

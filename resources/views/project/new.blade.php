@@ -26,7 +26,7 @@
                     placeholder="This is a wonderful project" value="{{ old('description') }}" />
 
                 <flux:input class="txt-box" label="Due date" name="due_at" type="date"
-                    placeholder="Choose the due date of the project" value="{{ old('deadline') }}" />
+                    placeholder="Choose the due date of the project" value="{{ old('due_at') }}" />
 
                 <button type="submit" class="btn-blue">
                     Create
