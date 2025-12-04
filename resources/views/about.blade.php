@@ -34,9 +34,9 @@
             </div>
         </div>
 
-        <button class="btn-blue mt-4">
-            Contact us
-        </button>
+        <div class="mt-4">
+            <a class="inline-block btn-blue" href="#">Contact us</a>
+        </div>
 
     </div>
 </x-layout>

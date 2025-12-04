@@ -12,11 +12,11 @@
             <p class="m-2"><strong>Email:</strong> {{ $user->email }}</p>
             <p class="m-2"><strong>Created in:</strong> {{ $user->created_at->format('d/m/Y') }}</p>
 
-            <a href="{{ route('dashboard') }}">
-                <button class="mt-5 btn-blue">
+            <div class="mt-5">
+                <a href="{{ route('dashboard') }}" class="inline-block btn-blue">
                     Back to Dashboard
-                </button>
-            </a>
+                </a>
+            </div>
         </div>
     @endauth
 </x-layout>

@@ -11,10 +11,9 @@
                 <flux:breadcrumbs.item href="{{ route('project.detail', $project) }}">{{ $project->name }}</flux:breadcrumbs.item>
                 <flux:breadcrumbs.item href="#">{{ $task->name }}</flux:breadcrumbs.item>
             </flux:breadcrumbs>
-            <h1 class="title mb-6 text-center">Task Information</h1>
+            <h1 class="title mb-6 text-center">{{ $task->name }}</h1>
 
-            <div class="space-y-3">
-                <p><strong>Title:</strong> {{ $task->name }}</p>
+            <div class="space-y-3">    
                 <p><strong>Description:</strong> {{ $task->description ?? '-' }}</p>
                 <p>
                     <strong>Priority:</strong> 

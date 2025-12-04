@@ -1,6 +1,6 @@
 <x-layout>
-   @if(session('success'))
-        <div class="w-full responsive">
+    @if(session('success'))
+        <div class="w-full responsive mb-3">
             <div x-data="{ visible: true }" x-show="visible" x-collapse>
                 <div x-show="visible" x-transition>
                     <flux:callout icon="check" color="green">
@@ -15,7 +15,7 @@
         </div>
     @endif
 
-    
+
     <div class="w-full mb-4">
         <h1 class="text-3xl font-bold text-center"> My dashboard </h1>
     </div>

@@ -7,7 +7,11 @@
 
     @auth
         <div class="container1">
-
+            {{-- Nav breadcrumbs --}}
+            <flux:breadcrumbs>
+                <flux:breadcrumbs.item href="{{ route('project.all') }}">Projects</flux:breadcrumbs.item>
+                <flux:breadcrumbs.item href="#">New Project</flux:breadcrumbs.item>
+            </flux:breadcrumbs>
             <h1 class="title1">
                 Create a new project
             </h1>

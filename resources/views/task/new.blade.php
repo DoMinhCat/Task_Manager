@@ -7,7 +7,13 @@
 
     @auth
         <div class="container1">
-
+            {{-- Nav breadcrumbs --}}
+            <flux:breadcrumbs>
+                <flux:breadcrumbs.item href="{{ route('project.all') }}">Projects</flux:breadcrumbs.item>
+                <flux:breadcrumbs.item href="{{ route('project.detail', $project) }}">{{ $project->name }}
+                </flux:breadcrumbs.item>
+                <flux:breadcrumbs.item href="#">New Task</flux:breadcrumbs.item>
+            </flux:breadcrumbs>
             <h1 class="title1">
                 Create a task
             </h1>
@@ -30,7 +36,7 @@
                     <flux:select.option value="high">High</flux:select.option>
                 </flux:select>
 
-                <button type="submit" class="btn-blue">
+                <button type="submit" class="btn-blue mt-3">
                     Create
                 </button>
             </form>

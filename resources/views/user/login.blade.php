@@ -32,7 +32,7 @@
                 <flux:input class="txt-box" label="Password" type="password" name="password"
                     placeholder="Enter your password" />
 
-                <button type="submit" class="btn-blue">
+                <button type="submit" class="btn-blue inline-block">
                     Sign in
                 </button>
             </form>

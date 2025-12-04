@@ -38,8 +38,7 @@
 
                     @if($tasks->count() > 0)
                         <a href="{{ route('task.new', $project->id) }}"
-                            class="inline-flex items-center justify-center px-5 py-2.5 bg-blue-600 hover:bg-blue-700 
-                                                                                                                                                                                              text-white font-medium rounded-lg shadow-sm hover:shadow-md transition">
+                            class="inline-flex items-center justify-center px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg shadow-sm hover:shadow-md transition">
                             <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
                             </svg>
@@ -74,12 +73,15 @@
                                         <th
                                             class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
                                             Deadline</th>
+                                        <th
+                                            class="px-6 py-4 text-left text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                            Actions</th>
                                     </tr>
                                 </thead>
 
                                 <tbody class="divide-y divide-gray-200">
                                     @foreach ($tasks as $task)
-                                        <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                        <tr class="hover:bg-blue-50 transition-colors duration-150">
 
                                             {{-- Task --}}
                                             <td class="px-6 py-4">

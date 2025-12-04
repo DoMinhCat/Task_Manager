@@ -81,7 +81,7 @@
                                 </thead>
                                 <tbody class="divide-y divide-gray-200">
                                     @foreach ($projects as $project)
-                                        <tr class="hover:bg-gray-50 transition-colors duration-150">
+                                        <tr class="hover:bg-blue-50 transition-colors duration-150">
                                             <td class="px-6 py-4">
                                                 <a href="{{ route('project.detail', $project->id) }}"
                                                     class="flex items-center group">
