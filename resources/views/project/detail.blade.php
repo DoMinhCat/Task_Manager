@@ -6,23 +6,10 @@
     @auth
         <div class="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8">
             <div class="max-w-7xl mx-auto">
-
                 {{-- Success --}}
-                @if(session('success'))
-                    <div class="w-full responsive mb-4">
-                        <div x-data="{ visible: true }" x-show="visible" x-collapse>
-                            <div x-show="visible" x-transition>
-                                <flux:callout icon="check" color="green">
-                                    <flux:callout.heading>{{ session('success') }}</flux:callout.heading>
-
-                                    <x-slot name="controls">
-                                        <flux:button icon="x-mark" variant="ghost" x-on:click="visible = false" />
-                                    </x-slot>
-                                </flux:callout>
-                            </div>
-                        </div>
-                    </div>
-                @endif
+                <x-response.success></x-response.success>
+                {{-- Error --}}
+                <x-response.error :errors="$errors"></x-response.error>
 
                 {{-- Nav breadcrumbs --}}
                 <flux:breadcrumbs>

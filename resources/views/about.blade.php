@@ -10,7 +10,7 @@
             organize your projects, track your progress, and stay productive every day.
         </p>
 
-        <h2 class="title1">
+        <h2 class="title1 mt-10">
             Our group
         </h2>
 
@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        <div class="mt-4">
+        <div class="mt-8">
             <a class="inline-block btn-blue" href="#">Contact us</a>
         </div>
 

@@ -12,7 +12,7 @@
 
 <flux:modal name="new-task-modal" flyout variant="floating">
     <div class="space-y-6 text-left">
-        <div>
+        <div class="text-center">
             <flux:heading size="lg">Create a Task
             </flux:heading>
         </div>

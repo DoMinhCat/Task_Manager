@@ -10,7 +10,7 @@
 
 <flux:modal name="new-proj-modal" flyout variant="floating">
     <div class="space-y-6 text-left">
-        <div>
+        <div class="text-center">
             <flux:heading size="lg">Create a Project
             </flux:heading>
         </div>

@@ -14,7 +14,7 @@
             </flux:breadcrumbs>
             <h1 class="title1">Edit a task</h1>
 
-            <form action="{{ route('task.edit.submit', [$project, $task]) }}" method="POST" class="space-y-5">
+            <form action="{{ route('task.update', [$project, $task]) }}" method="POST" class="space-y-5">
                 @csrf
                 @method('PATCH')
                 <flux:input class="txt-box" label="Name" name="name" value="{{ $task->name }}" />

@@ -12,7 +12,7 @@
             <p class="m-2"><strong>Email:</strong> {{ $user->email }}</p>
             <p class="m-2"><strong>Created in:</strong> {{ $user->created_at->format('d/m/Y') }}</p>
 
-            <div class="mt-5">
+            <div class="mt-5 text-center">
                 <a href="{{ route('dashboard') }}" class="inline-block btn-blue">
                     Back to Dashboard
                 </a>
