@@ -18,6 +18,7 @@ return new class extends Migration
             $table->enum('status', ['in_progress', 'completed', 'on_hold'])->default('on_hold');
             $table->timestamp('due_at')->nullable();
             $table->foreignId('owner_id')->constrained('users')->onDelete('cascade');
+            $table->enum('priority', ['high', 'medium', 'low'])->default('medium'); 
             $table->timestamps();
         });
     }

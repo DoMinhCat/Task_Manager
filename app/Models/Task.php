@@ -15,6 +15,7 @@ class Task extends Model
         'done',
         'priority',
         'due_at',
+        'status',
     ];
 
     // Relationship

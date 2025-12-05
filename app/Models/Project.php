@@ -14,6 +14,7 @@ class Project extends Model
         'description',
         'due_at',
         'status',
+        'priority',
         'owner_id',
     ];
 

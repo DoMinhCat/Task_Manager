@@ -50,6 +50,10 @@
                                         </th>
                                         <th scope="col"
                                             class="px-6 py-4 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">
+                                            Priority
+                                        </th>
+                                        <th scope="col"
+                                            class="px-6 py-4 text-center text-xs font-semibold text-gray-700 uppercase tracking-wider">
                                             Owner
                                         </th>
                                         <th scope="col"
@@ -84,7 +88,13 @@
                                                     {{ ucfirst(str_replace('_', ' ', $project->status)) }}
                                                 </span>
                                             </td>
-                                            <td class="px-6 py-4">
+                                            <td class="px-6 py-4 text-center">
+                                                <span
+                                                    class="font-semibold  @if($project->priority === 'high') text-red-500 @elseif($project->priority === 'medium') text-yellow-500 @else text-green-500 @endif">
+                                                    {{ ucfirst($project->priority) }}
+                                                </span>
+                                            </td>
+                                            <td class="px-6 py-4 text-center">
                                                 <a href="{{ route('account', $project->owner->id) }}"
                                                     class="flex items-center group">
                                                     <span

@@ -19,24 +19,40 @@
 
                 {{-- Header --}}
                 <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between mt-5 mb-8 gap-4">
-                    <div>
-                        <h1 class="text-3xl font-bold text-gray-900">
-                            {{ $project->name }}
-                        </h1>
+                    <div class="space-y-3">
 
+                        {{-- Title + Author --}}
+                        <div>
+                            <h1 class="text-4xl font-bold text-gray-900 tracking-tight">
+                                {{ $project->name }}
+                            </h1>
+
+                            <p class="mt-1 text-sm text-gray-500">
+                                Created by
+                                <span class="font-medium text-gray-700">{{ $project->owner->name }}</span>
+                            </p>
+                        </div>
+
+                        {{-- Deadline --}}
                         @if ($project->due_at)
-                            <div class="mt-1 flex items-center text-sm text-gray-700">
-                                <flux:icon.calendar class="w-4 h-4 mr-1.5 text-gray-400" />
-                                {{ $project->due_at->format('d/m/Y') }}
+                            <div class="flex items-center text-sm text-red-600">
+                                <flux:icon.calendar class="w-5 h-5 mr-2" />
+                                <span class="font-medium">
+                                    {{ $project->due_at->format('d/m/Y') }}
+                                </span>
                             </div>
                         @else
                             <span class="text-sm text-gray-400">No deadline</span>
                         @endif
 
-                        <p class="mt-2 text-sm text-gray-600">
-                            {{ $project->description ? $project->description : ""}}
-                        </p>
+                        @if ($project->description)
+                            <p class="text-sm leading-relaxed text-gray-700 mt-2">
+                                {{ $project->description }}
+                            </p>
+                        @endif
+
                     </div>
+
 
                     @if($tasks->count() > 0)
                         <div>

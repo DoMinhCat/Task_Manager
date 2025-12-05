@@ -27,6 +27,12 @@
             <flux:input class="txt-box" label="Due date" name="due_at" type="date"
                 placeholder="Choose the due date of the project" value="{{ old('due_at') }}" />
 
+            <flux:select label="Priority" name="priority" class="max-w-fit" placeholder="Choose a priority">
+                <flux:select.option value="low">Low</flux:select.option>
+                <flux:select.option value="medium">Medium</flux:select.option>
+                <flux:select.option value="high">High</flux:select.option>
+            </flux:select>
+
             <button type="submit" class="btn-blue">
                 Create
             </button>
