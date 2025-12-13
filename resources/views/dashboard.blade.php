@@ -43,7 +43,8 @@
         </div>
 
         <div class="bg-white p-4 rounded shadow col-span-1 md:col-span-2">
-            <h2 class="font-semibold mb-2">Project overview</h2>
+            <h2 class="font-semibold mb-2">Project overview</h2>           
+
             @foreach($projects as $project)
                 <div class="border p-2 mb-2 rounded">
                     <h3 class="font-bold">{{ $project->name }} ({{ $project->status }})</h3>
@@ -51,6 +52,30 @@
                     <p>Completed tasks: {{ $project->tasks->where('done', true)->count() }}</p>
                 </div>
             @endforeach
+        </div>
+
+        <div x-data="{ open: false }" class="relative">
+            <button
+                @click="open = !open"
+                class="border rounded px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200"
+            >
+                Sort by ▾
+            </button>
+
+            <div
+                x-show="open"
+                @click.outside="open = false"
+                x-transition
+                class="absolute right-0 mt-2 w-48 bg-white border rounded shadow z-10"
+            >
+                <a href="?sort=priority" class="block px-4 py-2 hover:bg-gray-100">
+                    Priority
+                </a>
+
+                <a href="?sort=due_at" class="block px-4 py-2 hover:bg-gray-100">
+                    Due date 
+                </a>
+            </div>
         </div>
 
     </div>
