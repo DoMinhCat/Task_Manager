@@ -74,6 +74,7 @@ class ProjectController extends Controller
             'description' => 'nullable|max:255',
             'due_at'      => 'nullable|date|not_before_today',
             'priority'    => 'required',
+            'status'      => 'required',
         ],
         [
         'due_at.not_before_today' => 'The due date cannot be in the past.',

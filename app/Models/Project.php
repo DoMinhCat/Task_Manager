@@ -16,6 +16,7 @@ class Project extends Model
         'status',
         'priority',
         'owner_id',
+        'auto_status',
     ];
 
     protected $casts = [

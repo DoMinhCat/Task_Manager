@@ -19,6 +19,7 @@ return new class extends Migration
             $table->timestamp('due_at')->nullable();
             $table->foreignId('owner_id')->constrained('users')->onDelete('cascade');
             $table->enum('priority', ['high', 'medium', 'low'])->default('medium'); 
+            $table->boolean('auto_status')->default(true);
             $table->timestamps();
         });
     }
