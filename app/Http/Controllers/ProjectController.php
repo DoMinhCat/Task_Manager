@@ -33,8 +33,10 @@ class ProjectController extends Controller
             'name'        => 'required|min:3|max:30',
             'description' => 'nullable|max:255',
             'due_at'      => 'nullable|date|not_before_today',
-            'priority' => 'required'
-        ]);
+            'priority' => 'required'],
+        [
+        'due_at.not_before_today' => 'The due date cannot be in the past.',
+    ]);
 
         $validated['owner_id'] = $request->user()->id;
         // Create project
@@ -72,7 +74,10 @@ class ProjectController extends Controller
             'description' => 'nullable|max:255',
             'due_at'      => 'nullable|date|not_before_today',
             'priority'    => 'required',
-        ]);
+        ],
+        [
+        'due_at.not_before_today' => 'The due date cannot be in the past.',
+    ]);
 
         $project->update($validated);
         return redirect()->back()->with('success', $validated['name'] . ' has been successfully updated.');

@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
 {
@@ -103,4 +105,29 @@ class UserController extends Controller
         $user->delete();
         return redirect()->route('home')->with('success', 'Account "'. $user->name . '" has been deleted.' );
     }
+
+    public function updatePassword(Request $request, User $user)
+{
+    // Ensure user can only update their own password
+    if ($request->user()->id !== $user->id) {
+        abort(403);
+    }
+
+    $request->validate([
+        'current_password' => 'required',
+        'password' => 'required|min:8|max:255|confirmed',
+    ]);
+
+    if (! Hash::check($request->current_password, $user->password)) {
+        throw ValidationException::withMessages([
+            'current_password' => 'The current password is incorrect.',
+        ]);
+    }
+
+    $user->update([
+        'password' => Hash::make($request->password),
+    ]);
+
+    return back()->with('success', 'Password has been changed.');
+}
 }

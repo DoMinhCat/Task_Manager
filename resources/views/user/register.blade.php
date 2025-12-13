@@ -20,16 +20,16 @@
             <form action="{{ route('register.submit') }}" method="POST" class="space-y-5">
                 @csrf
 
-                <flux:input class="txt-box" label="Name" name="name" placeholder="Enter your name"
+                <flux:input class="txt-box" label="Name" name="name" placeholder="Enter your name" required
                     value="{{ old('name') }}" />
 
-                <flux:input class="txt-box" label="Email" type="email" name="email" placeholder="Enter your email"
+                <flux:input class="txt-box" label="Email" type="email" name="email" placeholder="Enter your email" required
                     value="{{ old('email') }}" />
 
-                <flux:input class="txt-box" label="Password" type="password" name="password"
+                <flux:input class="txt-box" label="Password" type="password" name="password" required
                     placeholder="Choose your password" value="{{ old('password') }}" />
 
-                <flux:input class=" txt-box" label="Confirm password" type="password" name="password_confirmation"
+                <flux:input class=" txt-box" label="Confirm password" type="password" name="password_confirmation" required
                     placeholder="Confirm your password" value="{{ old('password_confirmation') }}" />
 
                 <button type="submit" class="btn-blue">

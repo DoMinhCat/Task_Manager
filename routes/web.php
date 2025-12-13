@@ -32,6 +32,7 @@ Route::post('/login/submit', [UserController::class, 'login'])->name('login.subm
 Route::post('/logout', [UserController::class, 'logout'])->name('logout');
 Route::get('/user/{user}', [UserController::class, 'show'])->name('account');
 Route::delete('/user/{user}', [UserController::class, 'destroy'])->name('account.delete');
+Route::patch('/user/{user}', [UserController::class, 'updatePassword'])->name('account.updatePassword');
 
 // PROJECT
 Route::get('/projects', [ProjectController::class, 'index'])->name('project.all');

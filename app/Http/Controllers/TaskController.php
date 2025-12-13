@@ -34,7 +34,10 @@ class TaskController extends Controller
             'description' => 'nullable|max:1023',
             'priority' => 'required',
             'due_at'      => 'nullable|date|not_before_today',
-        ]);
+        ],
+        [
+        'due_at.not_before_today' => 'The due date cannot be in the past.',
+    ]);
         $validated['project_id'] = $project->id;
         // Create project
         Task::create($validated);
@@ -74,8 +77,10 @@ class TaskController extends Controller
             'description' => 'nullable|max:1023',
             'priority' => 'required',
             'due_at'      => 'nullable|date|not_before_today',
-        ]);
-
+        ],
+        [
+        'due_at.not_before_today' => 'The due date cannot be in the past.',
+    ]);
         $task->update($validated);
         return redirect()->back()->with('success', $validated['name'] . ' has been successfully updated.');
     }
