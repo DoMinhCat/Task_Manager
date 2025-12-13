@@ -40,9 +40,7 @@ class ProjectController extends Controller
         // Create project
         Project::create($validated);
 
-        return redirect()
-            ->route('project.all')
-            ->with('success', $validated['name'] . ' has been successfully created.');
+        return redirect()->back()->with('success', $validated['name'] . ' has been successfully created.');
     }
 
     /**
@@ -77,9 +75,7 @@ class ProjectController extends Controller
         ]);
 
         $project->update($validated);
-        return redirect()
-            ->route('project.detail', $project)
-            ->with('success', $validated['name'] . ' has been successfully updated.');
+        return redirect()->back()->with('success', $validated['name'] . ' has been successfully updated.');
     }
 
     /**
@@ -88,6 +84,6 @@ class ProjectController extends Controller
     public function destroy(Project $project)
     {
         $project->delete();
-        return redirect()->route('project.all')->with('success', $project->name . ' has been deleted.' );
+        return redirect()->back()->with('success', $project->name . ' has been deleted.' );
     }
 }

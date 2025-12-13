@@ -39,9 +39,7 @@ class TaskController extends Controller
         // Create project
         Task::create($validated);
 
-        return redirect()
-        ->route('project.detail', $project)
-        ->with('success', $validated['name'] . ' has been successfully created.');
+        return redirect()->back()->with('success', $validated['name'] . ' has been successfully created.');
     }
 
     /**
@@ -79,9 +77,7 @@ class TaskController extends Controller
         ]);
 
         $task->update($validated);
-        return redirect()
-            ->route('project.detail', $project)
-            ->with('success', $validated['name'] . ' has been successfully updated.');
+        return redirect()->back()->with('success', $validated['name'] . ' has been successfully updated.');
     }
 
     /**
@@ -90,7 +86,17 @@ class TaskController extends Controller
     public function destroy(Project $project, Task $task)
     {
         $task->delete();
-        return redirect()->route('project.detail', $project)->with('success', $task->name . ' has been deleted.' );
-    
+        return redirect()->back()->with('success', $task->name . ' has been deleted.' );
+    }
+
+    public function updateStatus(Request $request, Task $task)
+    {
+        $validated = $request->validate([
+            'status'        => 'required',
+        ]);
+
+        $task->update($validated);
+
+        return redirect()->back();
     }
 }

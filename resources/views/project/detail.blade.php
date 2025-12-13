@@ -102,7 +102,7 @@
                                                 <flux:modal.trigger name="edit-task-{{ $task->id }}">
                                                     <a href="#" class="flex items-center group">
                                                         <span
-                                                            class="font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
+                                                            class="@if($task->status === 1) line-through text-gray-500 @else text-gray-900 font-semibold @endif group-hover:text-blue-600 transition-colors">
                                                             {{ $task->name }}
                                                         </span>
                                                     </a>
@@ -111,10 +111,18 @@
 
                                             {{-- Status --}}
                                             <td class="px-6 py-4 text-center">
-                                                <span
-                                                    class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium @if($task->status === 1) bg-green-100 text-green-700 @else bg-gray-100 text-gray-700 @endif">
-                                                    <flux:icon.check-circle />
-                                                </span>
+                                                <form action="{{ route('task.updateStatus', $task) }}" method="POST">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <input type="hidden" name="status"
+                                                        value="@if($task->status === 1) 0 @else 1 @endif">
+
+                                                    <button type="submit"><span
+                                                            class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium @if($task->status === 1) bg-green-100 text-green-700 hover:bg-gray-100 hover:text-gray-700 @else bg-gray-100 text-gray-700 hover:bg-green-100 hover:text-green-700  @endif">
+                                                            <flux:icon.check-circle />
+                                                        </span>
+                                                    </button>
+                                                </form>
                                             </td>
 
                                             {{-- Priority --}}
